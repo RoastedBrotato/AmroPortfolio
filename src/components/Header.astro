@@ -1,0 +1,27 @@
+---
+import ThemeToggle from './ThemeToggle';
+---
+
+<header class="bg-nav-light dark:bg-nav-dark w-64 h-screen sticky top-0 p-8 flex flex-col">
+  <nav class="flex flex-col h-full">
+    <div class="text-2xl font-bold mb-8 text-accent">Amro Smadi</div>
+    <ul class="flex-grow">
+      <li class="mb-4"><a href="/guidelines" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Guidelines</a></li>
+      <li class="mb-4"><a href="/logofolio" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Logofolio</a></li>
+      <li class="mb-4"><a href="/advertising" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Advertising</a></li>
+      <li class="mb-4"><a href="/social-media" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Social Media</a></li>
+      <li class="mb-4"><a href="/webdesign" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Webdesign</a></li>
+      <li class="mb-4"><a href="/video-motion" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Video and Motion Graphic</a></li>
+      <li class="mb-4"><a href="/photography" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Photography</a></li>
+      <li class="mb-4"><a href="/campaigns" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Campaigns & Activations</a></li>
+      <li class="mb-4"><a href="/contact" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Contact me</a></li>
+    </ul>
+    <div class="mt-auto">
+      <ThemeToggle client:load />
+      <div class="mt-4">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="block text-sm text-text-light dark:text-text-dark hover:text-accent transition-colors mb-2">Instagram</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="block text-sm text-text-light dark:text-text-dark hover:text-accent transition-colors">Vimeo</a>
+      </div>
+    </div>
+  </nav>
+</header>
