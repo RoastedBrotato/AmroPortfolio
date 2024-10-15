@@ -11,18 +11,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-<<<<<<< HEAD
     "astro": "^4.16.1",
-=======
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.2",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "astro": "^4.16.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.13",
->>>>>>> 8e5f759800f2abfe54dce97047dbe578a0f143cf
     "typescript": "^5.6.3"
   },
   "devDependencies": {
