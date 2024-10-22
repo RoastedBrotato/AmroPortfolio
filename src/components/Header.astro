@@ -1,5 +1,8 @@
 ---
 import ThemeToggle from './ThemeToggle.svelte';
+
+// Get the current URL path to determine active state
+const currentPath = Astro.url.pathname;
 ---
 <script>
   const mobileMenu = document.getElementById('mobile-menu');
@@ -28,29 +31,23 @@ import ThemeToggle from './ThemeToggle.svelte';
   <!-- Overlay -->
   <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
-  <!-- Mobile Header -->
-  <div class="lg:hidden fixed top-0 left-0 right-0 bg-nav-light dark:bg-nav-dark z-30 flex justify-between items-center px-4 py-3">
-    <a href="/" class="text-xl font-bold text-accent">
-      Amro Smadi
-    </a>
-    <!-- Mobile Menu Button -->
-    <button 
-      id="menu-button" 
-      class="p-2 rounded-md bg-background-light dark:bg-background-dark"
-      aria-label="Toggle menu"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
+  <!-- Mobile Menu Button -->
+  <button 
+    id="menu-button" 
+    class="fixed top-4 right-4 z-50 p-2 rounded-md bg-background-light dark:bg-background-dark lg:hidden"
+    aria-label="Toggle menu"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
 
   <!-- Header/Sidebar -->
   <header 
     id="mobile-menu"
     class="bg-nav-light dark:bg-nav-dark w-full lg:w-64 h-screen fixed top-0 right-0 flex flex-col transform translate-x-full transition-transform duration-300 z-50 lg:translate-x-0 lg:sticky lg:left-0"
   >
-    <nav class="flex flex-col h-full p-8">
+    <nav class="flex flex-col h-full py-8 px-6">
       <!-- Close button - visible only on mobile -->
       <button 
         id="close-button"
@@ -62,22 +59,94 @@ import ThemeToggle from './ThemeToggle.svelte';
         </svg>
       </button>
 
-      <!-- Logo - visible only on desktop -->
-      <a href="/" class="text-2xl font-bold mb-8 text-accent hover:opacity-80 transition-opacity hidden lg:block">
+      <!-- Logo - visible in desktop -->
+      <a href="/" class="text-xl lg:text-2xl font-bold mb-8 text-accent hover:opacity-80 transition-opacity hidden lg:block">
         Amro Smadi
       </a>
 
       <!-- Navigation Links -->
       <ul class="flex-grow space-y-4 mt-8 text-center md:text-left">
-        <li><a href="/guidelines" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Guidelines</a></li>
-        <li><a href="/logofolio" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Logofolio</a></li>
-        <li><a href="/advertising" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Advertising</a></li>
-        <li><a href="/social-media" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Social Media</a></li>
-        <li><a href="/webdesign" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Webdesign</a></li>
-        <li><a href="/video-motion" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Video and Motion Graphic</a></li>
-        <li><a href="/photography" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Photography</a></li>
-        <li><a href="/campaigns" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Campaigns & Activations</a></li>
-        <li><a href="/contact" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Contact me</a></li>
+      <li>
+          <a 
+            href="/guidelines" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+            Guidelines
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+         <li>
+          <a 
+            href="/logofolio" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+            Logofolio
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/advertising" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+            Advertising
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+         <li>
+          <a 
+            href="/social-media" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+            Social Media
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+         <li>
+          <a 
+            href="/webdesign" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+            Webdesign
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/video-motion" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+           Video & Motion Graphic
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/photography" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+           Photography
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+         <li>
+          <a 
+            href="/campaigns" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+           Campaigns & Activations
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
+            <li>
+          <a 
+            href="/contact" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/guidelines' ? 'text-accent' : ''}`}
+          >
+           Contact me
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/guidelines' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
       </ul>
 
       <!-- Footer Section -->
@@ -96,14 +165,6 @@ import ThemeToggle from './ThemeToggle.svelte';
       </div>
     </nav>
   </header>
-
-  <!-- Main Content Area -->
-  <main class="flex-1 min-h-screen lg:min-h-0">
-    <!-- Content padding for mobile header -->
-    <div class="pt-14 lg:pt-0">
-      <slot />
-    </div>
-  </main>
 </div>
 
 <style>
