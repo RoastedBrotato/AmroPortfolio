@@ -1,25 +1,68 @@
 ---
-import ThemeToggle from './ThemeToggle';
+import ThemeToggle from './ThemeToggle.svelte';
 ---
 
-<header class="bg-nav-light dark:bg-nav-dark w-64 h-screen sticky top-0 p-8 flex flex-col">
+<script>
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuButton = document.getElementById('menu-button');
+  const overlay = document.getElementById('menu-overlay');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('translate-x-full');
+    mobileMenu?.classList.toggle('translate-x-0');
+    overlay?.classList.toggle('hidden');
+  });
+
+  overlay?.addEventListener('click', () => {
+    mobileMenu?.classList.add('translate-x-full');
+    mobileMenu?.classList.remove('translate-x-0');
+    overlay?.classList.add('hidden');
+  });
+</script>
+
+<!-- Overlay -->
+<div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
+
+<!-- Mobile Menu Button -->
+<button 
+  id="menu-button" 
+  class="fixed top-4 right-4 z-50 p-2 rounded-md bg-background-light dark:bg-background-dark lg:hidden"
+  aria-label="Toggle menu"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+  </svg>
+</button>
+
+<!-- Header -->
+<header 
+  id="mobile-menu"
+  class="bg-nav-light dark:bg-nav-dark w-64 h-screen fixed top-0 right-0 p-8 flex flex-col transform translate-x-full transition-transform duration-300 z-50 lg:translate-x-0 lg:sticky lg:left-0"
+>
   <nav class="flex flex-col h-full">
     <div class="text-2xl font-bold mb-8 text-accent">Amro Smadi</div>
-    <ul class="flex-grow">
-      <li class="mb-4"><a href="/guidelines" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Guidelines</a></li>
-      <li class="mb-4"><a href="/logofolio" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Logofolio</a></li>
-      <li class="mb-4"><a href="/advertising" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Advertising</a></li>
-      <li class="mb-4"><a href="/social-media" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Social Media</a></li>
-      <li class="mb-4"><a href="/webdesign" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Webdesign</a></li>
-      <li class="mb-4"><a href="/video-motion" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Video and Motion Graphic</a></li>
-      <li class="mb-4"><a href="/photography" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Photography</a></li>
-      <li class="mb-4"><a href="/campaigns" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Campaigns & Activations</a></li>
-      <li class="mb-4"><a href="/contact" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Contact me</a></li>
+    <ul class="flex-grow space-y-4">
+      <li><a href="/guidelines" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Guidelines</a></li>
+      <li><a href="/logofolio" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Logofolio</a></li>
+      <li><a href="/advertising" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Advertising</a></li>
+      <li><a href="/social-media" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Social Media</a></li>
+      <li><a href="/webdesign" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Webdesign</a></li>
+      <li><a href="/video-motion" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Video and Motion Graphic</a></li>
+      <li><a href="/photography" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Photography</a></li>
+      <li><a href="/campaigns" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Campaigns & Activations</a></li>
+      <li><a href="/contact" class="text-text-light dark:text-text-dark hover:text-accent transition-colors">Contact me</a></li>
     </ul>
     <div class="mt-auto">
       <ThemeToggle client:load />
       <div class="mt-4">
-        <a href="#" target="_blank" rel="noopener noreferrer" class="block text-sm text-text-light dark:text-text-dark hover:text-accent transition-colors mb-2">Instagram</a>
+        <a 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="block text-sm text-text-light dark:text-text-dark hover:text-accent transition-colors"
+        >
+          Instagram
+        </a>
       </div>
     </div>
   </nav>
