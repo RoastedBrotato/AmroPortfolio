@@ -1,6 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PortfolioCard from '../components/PortfolioCard.svelte';
+
+const projects = [
+  {
+    title: "Project 1",
+    imageUrl: "https://via.placeholder.com/800x600"
+  },
+  {
+    title: "Project 2",
+    imageUrl: "https://via.placeholder.com/800x600"
+  },
+    {
+    title: "Project 3",
+    imageUrl: "https://via.placeholder.com/800x600"
+  },
+    {
+    title: "Project 4",
+    imageUrl: "https://via.placeholder.com/800x600"
+  },
+];
 ---
 
-<Layout title="Amro's Portfolio">
-
+<Layout title="Portfolio">
+  <main class="mx-auto px-8 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+     {projects.map(project => (
+        <div class="aspect-video w-full">
+          <PortfolioCard client:load {...project} />
+        </div>
+      ))}
+      </div>
+    </div>
+  </main>
+</Layout>
