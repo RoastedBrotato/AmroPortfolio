@@ -1,25 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: {
-          light: '#ffffff',
-          dark: '#121212',
-        },
-        text: {
-          light: '#333333',
-          dark: '#ffffff',
-        },
-        accent: '#f44336',
-        nav: {
-          light: '#f0f0f0',
-          dark: '#1e1e1e',
-        },
+        'nav-light': '#ffffff',
+        'nav-dark': '#1a1a1a',
+        'text-light': '#000000',
+        'text-dark': '#ffffff',
+        'background-light': '#ffffff',
+        'background-dark': '#1a1a1a',
+        'accent': '#007acc',
       },
     },
   },
   plugins: [],
-};
+}
