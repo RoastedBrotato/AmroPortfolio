@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PortfolioCard from '../components/PortfolioCard.svelte';
+import { Image } from 'astro:assets';
+import heroVideo from '../assets/videos/hero_video.mp4';
 
 const projects = [
   {
@@ -24,15 +26,28 @@ const projects = [
 
 <Layout title="Portfolio">
   <main class="mx-auto px-8 py-8">
-
-  <!-- Featured Projects Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-     {projects.map(project => (
-        <div class="aspect-video w-full">
-          <PortfolioCard client:load {...project} />
-        </div>
-      ))}
+    <!-- Hero Video Section -->
+    <div class="relative w-full mb-16">
+      <div class="w-full lg:h-[80vh] overflow-hidden"> 
+        <video 
+          class="w-full h-auto lg:h-full lg:object-cover"
+          autoplay 
+          loop 
+          muted 
+          playsinline
+        >
+          <source src={heroVideo} type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
+
+    <!-- Featured Projects Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-3">
+      {projects.map(project => (
+        <div class="aspect-video w-full">
+      <PortfolioCard client:load {...project} />        
+  </div>
+      ))}
     </div>
   </main>
 </Layout>
