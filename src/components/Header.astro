@@ -70,6 +70,15 @@ const currentPath = Astro.url.pathname;
 
       <!-- Navigation Links -->
       <ul class="flex-grow space-y-4 mt-8 text-center md:text-left">
+        <li>
+          <a 
+            href="/about-me" 
+            class={`block py-1 hover:text-accent transition-colors relative group ${currentPath === '/about-me' ? 'text-accent' : ''}`}
+          >
+            About Me
+            <span class={`absolute right-0 top-[23%] w-[5px] h-[15px] bg-accent rounded-full transition-opacity ${currentPath === '/about-me' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+          </a>
+        </li>
       <li>
           <a 
             href="/guidelines" 
