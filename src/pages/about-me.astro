@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { HeroSection } from '../components/about/HeroSection';
+import { ServicesSection } from '../components/about/ServicesSection';
+import { ClientsSection } from '../components/about/ClientsSection';
+import { TestimonialsSection } from '../components/about/TestimonialsSection';
+---
+
+<Layout title="About Me | Creative Director">
+  <main class="max-w-6xl mx-auto px-4 py-16">
+    <HeroSection client:load />
+    <ServicesSection client:load />
+    <ClientsSection client:load />
+    <TestimonialsSection client:load />
+  </main>
+</Layout>
